@@ -1,6 +1,8 @@
 
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Resume Analyzer</title>
@@ -21,9 +23,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
   <script src="https://npmcdn.com/pdfjs-dist@2.9.359/web/pdf_viewer.js"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-blue-100">
   <div class="container mx-auto py-10 px-4">
-    <h1 class="text-4xl font-bold mb-5">AI Resume Analyzer</h1>
+    <h1 id="typingHeading" class="text-5xl font-bold mb-5 typing"></h1>
+
+ 
     <div class="flex flex-wrap -mx-4">
       <div class="w-full lg:w-1/2 px-4">
         <form id="resumeForm" class="bg-white p-6 rounded shadow-lg">
@@ -211,5 +215,10 @@ Resume:
       }
     });
   </script>
+  
+  <footer class="text-center mt-10 pb-5 text-lg" style="font-family: 'Poppins', sans-serif; color: #7d3c98;">
+  Major Project by <span class="font-semibold">Bhavika</span> & <span class="font-semibold">Anvi</span>
+</footer>
+
 </body>
 </html>
