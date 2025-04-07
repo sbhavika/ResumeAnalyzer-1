@@ -1,43 +1,45 @@
+
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Resume Parsing Redefined</title>
-  <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://npmcdn.com/pdfjs-dist@2.9.359/web/pdf_viewer.css" />
-  <link rel="stylesheet" href="style.css" />
+  <title>AI Resume Analyzer</title>
 
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Merriweather&display=swap" rel="stylesheet">
+
+  <!-- PDF.js Viewer -->
+  <link rel="stylesheet" href="https://npmcdn.com/pdfjs-dist@2.9.359/web/pdf_viewer.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+  <script src="https://npmcdn.com/pdfjs-dist@2.9.359/web/pdf_viewer.js"></script>
+
+  <!-- Inline CSS -->
   <style>
     body {
       font-family: "Merriweather", serif;
     }
-    .hidden {
-      display: none;
+    .typing::after {
+      content: '|';
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
     h1 {
-      text-align: center;
+      font-family: "Poppins", sans-serif;
     }
-       .typing::after {
-  content: '|';
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
-  <script src="https://npmcdn.com/pdfjs-dist@2.9.359/web/pdf_viewer.js"></script>
 </head>
+
 <body class="bg-blue-100">
   <div class="container mx-auto py-10 px-4">
-    <h1 id="typingHeading" class="text-5xl font-bold mb-5 typing"></h1>
+    <h1 id="typingHeading" class="text-5xl font-bold mb-5 typing text-center text-purple-700"></h1>
 
- 
+    <!-- Form & Output -->
     <div class="flex flex-wrap -mx-4">
       <div class="w-full lg:w-1/2 px-4">
         <form id="resumeForm" class="bg-white p-6 rounded shadow-lg">
@@ -54,7 +56,6 @@
 
         <section id="output" class="bg-white p-6 mt-8 mb-10 rounded shadow-lg text-gray-900 whitespace-pre-wrap"></section>
 
-        <!-- 🎯 Personalized Recommendations Section -->
         <section id="recommendations" class="bg-white p-6 mt-4 rounded shadow-lg hidden text-gray-900">
           <h2 class="text-2xl font-semibold mb-4 text-blue-700">🎯 Personalized Recommendations</h2>
           <ul class="list-disc list-inside space-y-2"></ul>
@@ -72,6 +73,25 @@
     </div>
   </div>
 
+  <!-- Typing Heading Script -->
+  <script>
+    const text = "Resume Parsing Redefined";
+    const heading = document.getElementById("typingHeading");
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        heading.innerHTML = text.substring(0, index + 1);
+        index++;
+        setTimeout(type, 200);
+      } else {
+        heading.classList.remove("typing");
+      }
+    }
+    type();
+  </script>
+
+  <!-- Resume Analyzer Script -->
   <script>
     let pdf;
     let currentPage = 1;
@@ -224,28 +244,11 @@ Resume:
         alert("Oops, we couldn't extract text from this PDF. Please try another file.");
       }
     });
-    
-  const text = "Resume Parsing Redefined";
-  const heading = document.getElementById("typingHeading");
-  let index = 0;
-
-  function type() {
-    if (index < text.length) {
-      heading.innerHTML = text.substring(0, index + 1);
-      index++;
-      setTimeout(type, 200); 
-    } else {
-      heading.classList.remove("typing"); 
-    }
-  }
-
-  type();
-
   </script>
-  
-  <footer class="text-center mt-10 pb-5 text-lg" style="font-family: 'Poppins', sans-serif; color: #7d3c98;">
-  Major Project by <span class="font-semibold">Bhavika</span> & <span class="font-semibold">Anvi</span>
-</footer>
 
+  <!-- Footer -->
+  <footer class="text-center mt-10 pb-5 text-lg" style="font-family: 'Poppins', sans-serif; color: #7d3c98;">
+    Major Project by <span class="font-semibold">Bhavika</span> & <span class="font-semibold">Anvi</span>
+  </footer>
 </body>
 </html>
